@@ -61,7 +61,7 @@ The remaining skills are model-invoked reusable practices. An entry skill may us
 Examples:
 
 - `/value-boardroom 泡泡玛特 --mode briefing`
-- `/value-boardroom 吉利汽车 --mode examination --role cfo`
+- `/value-boardroom ... --mode ... --role cfo`
 
 ### Role modes
 
@@ -74,14 +74,14 @@ Examples:
 
 | Command | Purpose |
 |---|---|
-| `/role <role>` | Move to an executive's report within the active company record |
-| `/research [topic]` | Collect or request verifiable public information and classify it |
-| `/assumption` | View or revise material modelling assumptions |
-| `/evidence` | Show the evidence ledger |
-| `/cashflow` | Translate operating results into revenue, margin, working capital, CapEx, FCF, and ROIC |
-| `/stress-test` | Run bear/base/bull scenarios or a named shock |
-| `/kill` | Conduct a pre-mortem: explain how the company could destroy its cash-generation capacity |
-| `/board-summary` | Exit roleplay and prepare a traceable board conclusion |
+| `/value-role <role>` | Move to an executive's report within the active company record |
+| `/value-research [topic]` | Collect or request verifiable public information and classify it |
+| `/value-assumption` | View or revise material modelling assumptions |
+| `/value-evidence` | Show the evidence ledger |
+| `/value-cashflow` | Translate operating results into revenue, margin, working capital, CapEx, FCF, and ROIC |
+| `/value-stress-test` | Run bear/base/bull scenarios or a named shock |
+| `/value-kill` | Conduct a pre-mortem: explain how the company could destroy its cash-generation capacity |
+| `/value-board-summary` | Exit roleplay and prepare a traceable board conclusion |
 
 Each role turn contains only: (1) verified fact or labelled assumption, (2) that executive's incentive or budget request, (3) the FCF transmission path, and (4) one high-value board question. It must wait for the user's answer before continuing.
 
@@ -143,11 +143,11 @@ The session maintains the following portable record, which can be returned in a 
 
 The model runs bear, base, and bull cases as conditional stories—not artificial precision. Each case specifies the trigger, path through price/volume/cost/working capital/CapEx, resulting FCF direction, and evidence that would disprove it.
 
-Typical named shocks include a 10% price decline, 20% volume decline, 30% raw-material increase, extended collection period, high fixed-cost underutilization, and capital expenditure required merely to maintain competitiveness. `/kill` asks what would make the company cash-flow impaired in the chosen timeframe, then traces the mechanism backwards.
+Typical named shocks include a 10% price decline, 20% volume decline, 30% raw-material increase, extended collection period, high fixed-cost underutilization, and capital expenditure required merely to maintain competitiveness. `/value-kill` asks what would make the company cash-flow impaired in the chosen timeframe, then traces the mechanism backwards.
 
 ## Board Summary Contract
 
-`/board-summary` always contains:
+`/value-board-summary` always contains:
 
 1. How the business turns customer payments into free cash flow.
 2. What is likely to be stable versus changing over 5, 10, and 20 years.

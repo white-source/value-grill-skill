@@ -63,11 +63,11 @@ claude plugin install value-grill-skill@white-source
 | `briefing`（默认） | 选定的高管——带着其激励、预算与冲突 | 提问的董事 / 合伙人 | 通过盘问真实的经营细节来建立理解；高管必须把每个数字一路解释到现金流 |
 | `examination` | 董事会 | 作答的 CEO、CFO 或选定高管 | 检验**你自己**是否真的懂这门生意；董事会会抓住你推理中的漏洞和含糊其辞 |
 
-**briefing** = 通过盘问别人来学；**examination** = 通过被别人盘问来学。启动时一句话选定模式（默认 `briefing`），并随时可用 `/mode` 切换——直接说"反转角色""考考我"也行，无需重启。无论哪种，每一回合的契约都一样：陈述一个事实或标注过的假设、暴露一个激励冲突、画出一条清晰的现金流路径、并且只问一个问题。
+**briefing** = 通过盘问别人来学；**examination** = 通过被别人盘问来学。启动时一句话选定模式（默认 `briefing`），并随时可用 `/value-mode` 切换——直接说"反转角色""考考我"也行，无需重启。无论哪种，每一回合的契约都一样：陈述一个事实或标注过的假设、暴露一个激励冲突、画出一条清晰的现金流路径、并且只问一个问题。
 
 ## 经营角色
 
-十四个角色覆盖整家公司。用可自动补全的 `/role-<角色>` 快捷命令进入一个（如 `/role-cfo`），用 `/role ceo cfo ...` 串联多个，或用 `/next` 依次走完。每个角色只在其职责内发言、暴露一项预算或战略冲突，并把观点落到营收、成本、营运资本、CapEx 或资本配置上。
+十四个角色覆盖整家公司。用可自动补全的 `/value-role-<角色>` 快捷命令进入一个（如 `/value-role-cfo`），用 `/value-role ceo cfo ...` 串联多个，或用 `/value-next` 依次走完。每个角色只在其职责内发言、暴露一项预算或战略冲突，并把观点落到营收、成本、营运资本、CapEx 或资本配置上。
 
 | 角色 | 负责什么 | 要盘问什么 |
 |---|---|---|
@@ -92,17 +92,17 @@ claude plugin install value-grill-skill@white-source
 |---|---|
 | `/value-ask [问题或目标]` | 用自然语言描述你想做什么，推荐对应的命令并解释 |
 | `/value-boardroom [公司]` | 初始化或重置一个公司董事会会话 |
-| `/mode [briefing\|examination]` | 随时切换角色模式——或直接说"反转角色" |
-| `/role-<角色>` | 单角色快捷命令，**自动补全**——输入 `/role-` 即可选择（如 `/role-cfo`） |
-| `/role [角色...]` | 串联多个高管依次发言，如 `/role ceo cfo supply` |
-| `/next` | 走到建议路线的下一个角色——无需重复输入 |
-| `/research [主题]` | 收集或请求可核实的公开信息，并按证据类别归类 |
-| `/assumption` | 查看或修订关键建模假设 |
-| `/evidence` | 显示证据台账 |
-| `/cashflow` | 把经营成果转化为营收、利润率、营运资本、CapEx、FCF、ROIC |
-| `/stress-test [冲击]` | 跑一个命名冲击，或沿现金流链条构建熊/基准/牛情景 |
-| `/kill [年份]` | 预演破产：假设到所选年份现金流失败，再倒推原因 |
-| `/board-summary` | 退出角色扮演，汇总出可追溯的董事会结论 |
+| `/value-mode [briefing\|examination]` | 随时切换角色模式——或直接说"反转角色" |
+| `/value-role-<角色>` | 单角色快捷命令，**自动补全**——输入 `/value-role-` 即可选择（如 `/value-role-cfo`） |
+| `/value-role [角色...]` | 串联多个高管依次发言，如 `/value-role ceo cfo supply` |
+| `/value-next` | 走到建议路线的下一个角色——无需重复输入 |
+| `/value-research [主题]` | 收集或请求可核实的公开信息，并按证据类别归类 |
+| `/value-assumption` | 查看或修订关键建模假设 |
+| `/value-evidence` | 显示证据台账 |
+| `/value-cashflow` | 把经营成果转化为营收、利润率、营运资本、CapEx、FCF、ROIC |
+| `/value-stress-test [冲击]` | 跑一个命名冲击，或沿现金流链条构建熊/基准/牛情景 |
+| `/value-kill [年份]` | 预演破产：假设到所选年份现金流失败，再倒推原因 |
+| `/value-board-summary` | 退出角色扮演，汇总出可追溯的董事会结论 |
 
 ## 示例：泡泡玛特（Pop Mart，HKEX: 9992）
 
@@ -116,7 +116,7 @@ claude plugin install value-grill-skill@white-source
 确认：泡泡玛特国际集团（HKEX: 9992），截止日 2026-07。briefing 模式（模型扮高管，你当董事）。
 
 ```text
-> /role-cfo
+> /value-role-cfo
 ```
 
 **[CFO 汇报]**
@@ -136,7 +136,7 @@ claude plugin install value-grill-skill@white-source
 > *董事问题：TTM 的 FCF 里，多少用于维护性 CapEx vs 增长性 CapEx？新店回本需要多长时间？*
 
 ```text
-> /cashflow
+> /value-cashflow
 ```
 
 **客户付款 → FCF 桥梁（全部带证据类别）：**
@@ -156,7 +156,7 @@ claude plugin install value-grill-skill@white-source
 3. **毛绒品类占比** —— 结构提价 > CapEx 投入（`Inference`）
 
 ```text
-> /stress-test 客单价下降10%
+> /value-stress-test 客单价下降10%
 ```
 
 **冲击链：** 价格 -10% → 杯量？(Unknown) → 固定成本不变 → 营业杠杆恶化 → FCF 承压。**熊/基准/牛模型（条件故事，非精确预测）：**
@@ -168,12 +168,12 @@ claude plugin install value-grill-skill@white-source
 | 牛（杯量升 15%+） | 几乎不受影响 | 杯量升幅 ≥ 降幅 |
 
 ```text
-> /kill 2030
+> /value-kill 2030
 ```
 **预演：** Labubu 热度峰值回落 → 同店杯量降 → 海外新店回本期 > 36 个月 → 增长 CapEx 烧钱 → 2030 现金流危机。**最早警示指标**：海外同店杯量连降 3 季 + 回本期 > 3 年。
 
 ```text
-> /board-summary
+> /value-board-summary
 ```
 
 **六段结论节选：**

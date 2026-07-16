@@ -14,11 +14,11 @@ User-entry skill that exits roleplay and synthesizes the session's company recor
 
 | Command | Purpose |
 |---|---|
-| `/board-summary` | Exit roleplay and prepare a traceable board conclusion from the session record |
+| `/value-board-summary` | Exit roleplay and prepare a traceable board conclusion from the session record |
 
 ## Six Required Sections
 
-Every `/board-summary` output contains exactly these six sections, in order:
+Every `/value-board-summary` output contains exactly these six sections, in order:
 
 1. **FCF mechanism.** How the business turns customer payments into free cash flow — traced through price, volume, mix, cost, working capital, CapEx, and capital allocation.
 2. **Stable and changing conditions over 5, 10, and 20 years.** Which operating assumptions are likely to hold versus shift across each horizon.

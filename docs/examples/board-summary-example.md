@@ -1,10 +1,10 @@
-# `/board-summary` 示例文档（虚构）
+# `/value-board-summary` 示例文档（虚构）
 
-> 本文档演示 `/board-summary` 命令的输出形态。所用公司 **「晨曦咖啡（Sunrise Coffee）」是完全虚构的示例**，所有数字均为**标注的假设（Assumption）**，仅用于教学。
+> 本文档演示 `/value-board-summary` 命令的输出形态。所用公司 **「晨曦咖啡（Sunrise Coffee）」是完全虚构的示例**，所有数字均为**标注的假设（Assumption）**，仅用于教学。
 >
 > **这不是投资建议、不含目标价、不含买卖判断。** This is a research and learning framework, not an investment recommendation.
 
-`/board-summary` 退出角色扮演，把整场董事会研究记录汇总成一份**可追溯**的结论。它固定六个部分，每条结论都标注证据类别（`Fact` / `Management statement` / `Inference` / `Assumption` / `Unknown`）。模板见 `references/evidence-ledger.md`。
+`/value-board-summary` 退出角色扮演，把整场董事会研究记录汇总成一份**可追溯**的结论。它固定六个部分，每条结论都标注证据类别（`Fact` / `Management statement` / `Inference` / `Assumption` / `Unknown`）。模板见 `references/evidence-ledger.md`。
 
 ---
 
@@ -54,7 +54,7 @@
 
 ---
 
-## 三、董事会结论（`/board-summary` 的六段输出）
+## 三、董事会结论（`/value-board-summary` 的六段输出）
 
 ### 1. 客户付款 → 自由现金流的机制
 

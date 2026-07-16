@@ -219,15 +219,15 @@ disable-model-invocation: true
 ---
 ```
 
-Require `references/operating-roles.md` and `references/evidence-ledger.md`. Define `/value-boardroom [company]`, `/role <role>`, `/research [topic]`, `/assumption`, `/evidence`, and `/cashflow`. Initialization confirms company, identifier/market if known, as-of date, research goal, evidence mode, and `briefing`/`examination` mode. Keep the portable company record from the design. Run one role turn only, and state that this skill may use reusable disciplines but never invokes another entry skill.
+Require `references/operating-roles.md` and `references/evidence-ledger.md`. Define `/value-boardroom [company]`, `/role <role>`, `/research [topic]`, `/value-assumption`, `/value-evidence`, and `/value-cashflow`. Initialization confirms company, identifier/market if known, as-of date, research goal, evidence mode, and `briefing`/`examination` mode. Keep the portable company record from the design. Run one role turn only, and state that this skill may use reusable disciplines but never invokes another entry skill.
 
 - [ ] **Step 2: Implement `value-stress-test`**
 
-Use frontmatter `name: value-stress-test` and `disable-model-invocation: true`. Define `/stress-test` and `/kill`. A stress test traces the selected shock through price, volume, mix, cost, receivables, inventory, payables, CapEx, FCF, financing, and management response. Output bear/base/bull conditions, never a false-precision point forecast. `/kill` assumes material cash-flow failure by the selected year, works backwards through causes, names an early indicator, and asks one decision question.
+Use frontmatter `name: value-stress-test` and `disable-model-invocation: true`. Define `/value-stress-test` and `/value-kill`. A stress test traces the selected shock through price, volume, mix, cost, receivables, inventory, payables, CapEx, FCF, financing, and management response. Output bear/base/bull conditions, never a false-precision point forecast. `/value-kill` assumes material cash-flow failure by the selected year, works backwards through causes, names an early indicator, and asks one decision question.
 
 - [ ] **Step 3: Implement `value-board-summary`**
 
-Use frontmatter `name: value-board-summary` and `disable-model-invocation: true`. Define `/board-summary` with six required sections: FCF mechanism; 5/10/20-year stable and changing conditions; conditional bear/base/bull cases; at most three drivers; counterevidence and unknowns; next agenda. Require the evidence classes in `references/evidence-ledger.md`. Include: `This is a research and learning framework, not an investment recommendation.`
+Use frontmatter `name: value-board-summary` and `disable-model-invocation: true`. Define `/value-board-summary` with six required sections: FCF mechanism; 5/10/20-year stable and changing conditions; conditional bear/base/bull cases; at most three drivers; counterevidence and unknowns; next agenda. Require the evidence classes in `references/evidence-ledger.md`. Include: `This is a research and learning framework, not an investment recommendation.`
 
 - [ ] **Step 4: Run the complete contract test**
 
@@ -249,7 +249,7 @@ Run: `git add skills/value-boardroom skills/value-stress-test skills/value-board
 
 - [ ] **Step 1: Write `README.md`**
 
-Document: purpose; `npx skills@latest add white-source/value-grill-skill`; start command `/value-boardroom [company name or ticker]`; both modes; one-sentence descriptions of `/role`, `/research`, `/assumption`, `/evidence`, `/cashflow`, `/stress-test`, `/kill`, and `/board-summary`; the five evidence classes; optional and source-dated web research; no investment recommendations, target prices, or trade instructions; and `npm test` verification.
+Document: purpose; `npx skills@latest add white-source/value-grill-skill`; start command `/value-boardroom [company name or ticker]`; both modes; one-sentence descriptions of `/role`, `/value-research`, `/value-assumption`, `/value-evidence`, `/value-cashflow`, `/value-stress-test`, `/value-kill`, and `/value-board-summary`; the five evidence classes; optional and source-dated web research; no investment recommendations, target prices, or trade instructions; and `npm test` verification.
 
 - [ ] **Step 2: Write `.claude-plugin/plugin.json`**
 

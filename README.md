@@ -63,11 +63,11 @@ This library's signature feature is **role reversal**: you can study a company f
 | `briefing` (default) | The selected executive — with their incentives, budgets, and conflicts | A board director / partner asking questions | Build understanding by cross-examining real operating detail. The executive must justify every number all the way to cash flow. |
 | `examination` | The board | The CEO, CFO, or selected executive — answering | Pressure-test whether *you* actually understand the business. The board catches the gaps and hand-waving in your own reasoning. |
 
-**briefing** = learn by interrogating. **examination** = learn by being interrogated. You pick the mode with one quick question at startup (default `briefing`), and switch any time with `/mode` — or just say it ("reverse roles", "考考我"). No restart needed. Either way, the turn contract is identical: state a fact or labelled assumption, expose one incentive conflict, trace a clear cash-flow path, and ask exactly one question.
+**briefing** = learn by interrogating. **examination** = learn by being interrogated. You pick the mode with one quick question at startup (default `briefing`), and switch any time with `/value-mode` — or just say it ("reverse roles", "考考我"). No restart needed. Either way, the turn contract is identical: state a fact or labelled assumption, expose one incentive conflict, trace a clear cash-flow path, and ask exactly one question.
 
 ## Operating roles
 
-Fourteen roles cover the whole company. Enter one with the auto-completing `/role-<role>` shortcut (e.g. `/role-cfo`), chain several with `/role ceo cfo ...`, or step through with `/next`. Each speaks only within its remit, surfaces a budget or strategic conflict, and traces its point to revenue, cost, working capital, CapEx, or capital allocation.
+Fourteen roles cover the whole company. Enter one with the auto-completing `/value-role-<role>` shortcut (e.g. `/value-role-cfo`), chain several with `/value-role ceo cfo ...`, or step through with `/value-next`. Each speaks only within its remit, surfaces a budget or strategic conflict, and traces its point to revenue, cost, working capital, CapEx, or capital allocation.
 
 | Role | What they own | What to interrogate |
 |---|---|---|
@@ -92,17 +92,17 @@ Fourteen roles cover the whole company. Enter one with the auto-completing `/rol
 |---|---|
 | `/value-ask [question or goal]` | Describe what you want; get the right command with an explanation |
 | `/value-boardroom [company]` | Initialize or reset a company boardroom session |
-| `/mode [briefing\|examination]` | Switch role mode anytime — or just say "reverse roles" |
-| `/role-<role>` | Single-role shortcut that **auto-completes** — type `/role-` and pick (e.g. `/role-cfo`) |
-| `/role [role...]` | Chain several executives in sequence, e.g. `/role ceo cfo supply` |
-| `/next` | Step to the next role on the suggested tour — no retyping |
-| `/research [topic]` | Collect or request verifiable public information and classify it by evidence class |
-| `/assumption` | View or revise material modelling assumptions |
-| `/evidence` | Show the evidence ledger |
-| `/cashflow` | Translate operating results into revenue, margin, working capital, CapEx, FCF, and ROIC |
-| `/stress-test [shock]` | Run a named shock or build bear/base/bull cases through the cash-flow chain |
-| `/kill [year]` | Pre-mortem: assume cash-flow failure by the chosen year and work backwards |
-| `/board-summary` | Exit roleplay and synthesize a traceable board conclusion |
+| `/value-mode [briefing\|examination]` | Switch role mode anytime — or just say "reverse roles" |
+| `/value-role-<role>` | Single-role shortcut that **auto-completes** — type `/value-role-` and pick (e.g. `/value-role-cfo`) |
+| `/value-role [role...]` | Chain several executives in sequence, e.g. `/value-role ceo cfo supply` |
+| `/value-next` | Step to the next role on the suggested tour — no retyping |
+| `/value-research [topic]` | Collect or request verifiable public information and classify it by evidence class |
+| `/value-assumption` | View or revise material modelling assumptions |
+| `/value-evidence` | Show the evidence ledger |
+| `/value-cashflow` | Translate operating results into revenue, margin, working capital, CapEx, FCF, and ROIC |
+| `/value-stress-test [shock]` | Run a named shock or build bear/base/bull cases through the cash-flow chain |
+| `/value-kill [year]` | Pre-mortem: assume cash-flow failure by the chosen year and work backwards |
+| `/value-board-summary` | Exit roleplay and synthesize a traceable board conclusion |
 
 ## Example: Pop Mart (泡泡玛特, HKEX: 9992)
 
@@ -116,7 +116,7 @@ A condensed run of the main commands on a real listed company, with real sourced
 Company confirmed. Pop Mart International (HKEX: 9992), as-of July 2026. Briefing mode.
 
 ```text
-> /role-cfo
+> /value-role-cfo
 ```
 
 | Metric | TTM (HKD) | Class |
@@ -130,22 +130,22 @@ Company confirmed. Pop Mart International (HKEX: 9992), as-of July 2026. Briefin
 FCF/net ≈ 71% → ~29% of profit absorbed by working capital + CapEx (`Inference`). Light asset, high margin, low debt.
 
 ```text
-> /cashflow
+> /value-cashflow
 ```
 Avg price ¥59–69/box (`Fact`, Wikipedia) × units × IP mix → revenue ¥34B (`Fact`, Yahoo Finance TTM) → high margin → light WC (cash at sale) → CapEx (stores/roboshops/overseas) → **FCF HKD 9.1B TTM**. Three drivers: same-store traffic, overseas ROIC, premium-category mix (`Inference`).
 
 ```text
-> /stress-test price -10%
+> /value-stress-test price -10%
 ```
 Chain: price ↓ → volume? (`Unknown`) → fixed cost unchanged → operating leverage worsens → FCF pressured. **Bear/Base/Bull with falsification criteria**, not a single forecast.
 
 ```text
-> /kill 2030
+> /value-kill 2030
 ```
 Pre-mortem: Labubu fatigue → comps weaken → overseas payback stretches >36 months → growth CapEx becomes a cash drain → 2030 crunch. **Early indicator**: overseas comps 3-quarter decline + payback >3yr.
 
 ```text
-> /board-summary
+> /value-board-summary
 ```
 Six-section conclusion: FCF mechanism tracked to sourced data, 5/10/20yr stability assessment, conditional scenarios, ≤3 drivers, counterevidence ranked by materiality, next agenda with roles + evidence + metrics to observe.
 

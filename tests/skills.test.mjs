@@ -39,7 +39,7 @@ test("research, questioning, and safety contracts are explicit", () => {
 
 test("every role has an auto-completable single-role command", () => {
   for (const r of roleIds) {
-    const path = join(root, "commands", `role-${r}.md`);
+    const path = join(root, "commands", `value-role-${r}.md`);
     assert.ok(existsSync(path), `Missing ${path}`);
     assert.match(readFileSync(path, "utf8"), /^---\n[\s\S]*description: .+\n[\s\S]*---/);
     assert.match(readFileSync(path, "utf8"), new RegExp(`\\b${r}\\b`));

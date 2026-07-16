@@ -26,7 +26,7 @@
 
 ---
 
-## 2. `/role-ceo`（CEO —— 增长来源、战略边界、资本配置）
+## 2. `/value-role-ceo`（CEO —— 增长来源、战略边界、资本配置）
 
 > briefing 模式：模型模拟 CEO，用户作为董事发问。
 
@@ -44,7 +44,7 @@
 
 ---
 
-## 3. `/role-cfo`（CFO —— 利润质量、杠杆、营运资本、资本配置）
+## 3. `/value-role-cfo`（CFO —— 利润质量、杠杆、营运资本、资本配置）
 
 **关键经营事实（`Fact`，来源：Yahoo Finance TTM 截至约 2026 年 4 月）：**
 
@@ -70,7 +70,7 @@
 
 ---
 
-## 4. `/cashflow`
+## 4. `/value-cashflow`
 
 **客户付款 -> FCF 的完整桥梁（主要基于 Yahoo Finance TTM 数据，标注 `Fact` / `Inference` / `Assumption`）：**
 
@@ -146,7 +146,7 @@
 
 ---
 
-## 7. `/board-summary`
+## 7. `/value-board-summary`
 
 ### 1. FCF 机制
 
@@ -200,9 +200,9 @@
 | 命令 | 演示了什么 |
 |---|---|
 | `/value-boardroom 泡泡玛特` | 启动会话，确认公司 + 截止日期 + 模式 |
-| `/role-ceo` | 单角色汇报：增长三股力量 + IP 生命周期冲突 |
-| `/role-cfo` | 单角色汇报：利润质量 + FCF 质量分析 |
-| `/cashflow` | 完整 FCF 桥梁 + 三个驱动 + ROIC 框架 |
-| `/stress-test` | 客单价 -10% 冲击的传导链条 + 熊/基准/牛附证伪条件 |
-| `/kill 2030` | 倒推最可能现金流崩坏路径 + 早期警示指标 |
-| `/board-summary` | 六段标准输出，每条结论附证据类别 |
+| `/value-role-ceo` | 单角色汇报：增长三股力量 + IP 生命周期冲突 |
+| `/value-role-cfo` | 单角色汇报：利润质量 + FCF 质量分析 |
+| `/value-cashflow` | 完整 FCF 桥梁 + 三个驱动 + ROIC 框架 |
+| `/value-stress-test` | 客单价 -10% 冲击的传导链条 + 熊/基准/牛附证伪条件 |
+| `/value-kill 2030` | 倒推最可能现金流崩坏路径 + 早期警示指标 |
+| `/value-board-summary` | 六段标准输出，每条结论附证据类别 |

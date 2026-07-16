@@ -63,11 +63,11 @@ La característica distintiva de esta biblioteca es la **inversión de roles**: 
 | `briefing` (predeterminado) | El ejecutivo seleccionado — con sus incentivos, presupuestos y conflictos | Un director / socio que pregunta | Construyes entendimiento interrogando el detalle operativo real; el ejecutivo debe justificar cada cifra hasta el flujo de caja |
 | `examination` | La junta | El CEO, CFO o ejecutivo seleccionado — respondiendo | Pone a prueba si *tú* de verdad entiendes el negocio; la junta expone los huecos y las evasivas de tu propio razonamiento |
 
-**briefing** = aprender interrogando. **examination** = aprender siendo interrogado. Eliges el modo con una pregunta rápida al iniciar (predeterminado `briefing`) y lo cambias en cualquier momento con `/mode` — o simplemente dilo («invierte los roles», «examíname»). No hace falta reiniciar. En ambos casos el contrato de cada turno es idéntico: afirmar un hecho o supuesto etiquetado, exponer un conflicto de incentivos, trazar una ruta clara hacia el flujo de caja y formular exactamente una pregunta.
+**briefing** = aprender interrogando. **examination** = aprender siendo interrogado. Eliges el modo con una pregunta rápida al iniciar (predeterminado `briefing`) y lo cambias en cualquier momento con `/value-mode` — o simplemente dilo («invierte los roles», «examíname»). No hace falta reiniciar. En ambos casos el contrato de cada turno es idéntico: afirmar un hecho o supuesto etiquetado, exponer un conflicto de incentivos, trazar una ruta clara hacia el flujo de caja y formular exactamente una pregunta.
 
 ## Roles operativos
 
-Catorce roles cubren toda la empresa. Entra en uno con el atajo autocompletable `/role-<rol>` (p. ej. `/role-cfo`), encadena varios con `/role ceo cfo ...`, o avanza con `/next`. Cada rol habla solo dentro de su ámbito, expone un conflicto de presupuesto o estrategia y conecta su punto con ingresos, costes, capital circulante, CapEx o asignación de capital.
+Catorce roles cubren toda la empresa. Entra en uno con el atajo autocompletable `/value-role-<rol>` (p. ej. `/value-role-cfo`), encadena varios con `/value-role ceo cfo ...`, o avanza con `/value-next`. Cada rol habla solo dentro de su ámbito, expone un conflicto de presupuesto o estrategia y conecta su punto con ingresos, costes, capital circulante, CapEx o asignación de capital.
 
 | Rol | De qué se encarga | Qué interrogar |
 |---|---|---|
@@ -92,17 +92,17 @@ Catorce roles cubren toda la empresa. Entra en uno con el atajo autocompletable 
 |---|---|
 | `/value-ask [pregunta u objetivo]` | Describe lo que quieres; recibe el comando adecuado con una explicación |
 | `/value-boardroom [empresa]` | Inicializa o reinicia una sesión de sala de juntas |
-| `/mode [briefing\|examination]` | Cambia el modo de rol en cualquier momento — o simplemente dilo |
-| `/role-<rol>` | Atajo de rol único con **autocompletado** — escribe `/role-` y elige (p. ej. `/role-cfo`) |
-| `/role [rol...]` | Encadena varios ejecutivos en secuencia, p. ej. `/role ceo cfo supply` |
-| `/next` | Avanza al siguiente rol del recorrido sugerido — sin reescribir |
-| `/research [tema]` | Recopila o solicita información pública verificable y la clasifica por clase de evidencia |
-| `/assumption` | Ver o revisar los supuestos materiales del modelo |
-| `/evidence` | Muestra el libro mayor de evidencia |
-| `/cashflow` | Convierte resultados operativos en ingresos, margen, capital circulante, CapEx, FCF y ROIC |
-| `/stress-test [shock]` | Ejecuta un shock nombrado o construye escenarios pesimista/base/optimista a lo largo de la cadena de flujo de caja |
-| `/kill [año]` | Pre-mortem: asume fallo de flujo de caja para el año elegido y trabaja hacia atrás |
-| `/board-summary` | Sale del roleplay y sintetiza una conclusión trazable de la junta |
+| `/value-mode [briefing\|examination]` | Cambia el modo de rol en cualquier momento — o simplemente dilo |
+| `/value-role-<rol>` | Atajo de rol único con **autocompletado** — escribe `/value-role-` y elige (p. ej. `/value-role-cfo`) |
+| `/value-role [rol...]` | Encadena varios ejecutivos en secuencia, p. ej. `/value-role ceo cfo supply` |
+| `/value-next` | Avanza al siguiente rol del recorrido sugerido — sin reescribir |
+| `/value-research [tema]` | Recopila o solicita información pública verificable y la clasifica por clase de evidencia |
+| `/value-assumption` | Ver o revisar los supuestos materiales del modelo |
+| `/value-evidence` | Muestra el libro mayor de evidencia |
+| `/value-cashflow` | Convierte resultados operativos en ingresos, margen, capital circulante, CapEx, FCF y ROIC |
+| `/value-stress-test [shock]` | Ejecuta un shock nombrado o construye escenarios pesimista/base/optimista a lo largo de la cadena de flujo de caja |
+| `/value-kill [año]` | Pre-mortem: asume fallo de flujo de caja para el año elegido y trabaja hacia atrás |
+| `/value-board-summary` | Sale del roleplay y sintetiza una conclusión trazable de la junta |
 
 ## Ejemplo: Pop Mart (泡泡瑪特, HKEX: 9992)
 
@@ -114,7 +114,7 @@ Catorce roles cubren toda la empresa. Entra en uno con el atajo autocompletable 
 Pop Mart (HKEX: 9992), referencia julio 2026, modo briefing.
 
 ```text
-> /role-cfo
+> /value-role-cfo
 ```
 | Métrica | TTM (HKD) | Clase |
 |---|---|---|
@@ -124,17 +124,17 @@ Pop Mart (HKEX: 9992), referencia julio 2026, modo briefing.
 | Caja | 17,2B (D/E 12,6%) | `Fact` |
 
 ```text
-> /cashflow
+> /value-cashflow
 ```
 ¥59–69/caja (`Fact`) → ingresos ¥34B (`Fact`) → alto margen → WC ligero → CapEx → **FCF HKD 9,1B**. Tres drivers: tráfico en mismas tiendas, ROIC exterior, mezcla prémium. (`Inference`)
 
 ```text
-> /stress-test precio -10% / > /kill 2030
+> /value-stress-test precio -10% / > /value-kill 2030
 ```
 Cadena de transmisión del shock + pre-mortem. Ambos como **historias condicionales con criterios de falsación**, nunca un pronóstico puntual falso.
 
 ```text
-> /board-summary
+> /value-board-summary
 ```
 Conclusión de junta en 6 secciones con datos con fuente. *Sin recomendación, precio objetivo ni instrucciones de trading.*
 

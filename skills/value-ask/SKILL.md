@@ -36,16 +36,16 @@ Map the user's intent to a command:
 | If the user wants to… | Recommend |
 |---|---|
 | Start studying a company, set up the boardroom, or switch company | `/value-boardroom [company]` |
-| Switch role mode — reverse roles, "examine me", or play an executive yourself | `/mode [briefing\|examination]` |
-| Hear from a specific department or executive (CFO, supply, sales…) | `/role-<role>` shortcut, e.g. `/role-cfo` (auto-completes — type `/role-` and pick) |
-| Visit several roles, or tour the whole company without retyping | `/role ceo cfo ...` to chain, or `/next` to step through |
-| Gather facts, filings, earnings, or verify a source | `/research [topic]` |
-| Check or revise modelling inputs / assumptions | `/assumption` |
-| See what evidence has been collected | `/evidence` |
-| Connect operations to FCF, margin, working capital, CapEx, ROIC | `/cashflow` |
-| Test a shock, or build bear/base/bull scenarios | `/stress-test [shock]` |
-| Pre-mortem: how the business could break or run out of cash | `/kill [year]` |
-| Wrap the session into a traceable board conclusion | `/board-summary` |
+| Switch role mode — reverse roles, "examine me", or play an executive yourself | `/value-mode [briefing\|examination]` |
+| Hear from a specific department or executive (CFO, supply, sales…) | `/value-role-<role>` shortcut, e.g. `/value-role-cfo` (auto-completes — type `/value-role-` and pick) |
+| Visit several roles, or tour the whole company without retyping | `/value-role ceo cfo ...` to chain, or `/value-next` to step through |
+| Gather facts, filings, earnings, or verify a source | `/value-research [topic]` |
+| Check or revise modelling inputs / assumptions | `/value-assumption` |
+| See what evidence has been collected | `/value-evidence` |
+| Connect operations to FCF, margin, working capital, CapEx, ROIC | `/value-cashflow` |
+| Test a shock, or build bear/base/bull scenarios | `/value-stress-test [shock]` |
+| Pre-mortem: how the business could break or run out of cash | `/value-kill [year]` |
+| Wrap the session into a traceable board conclusion | `/value-board-summary` |
 
 ## Rules
 

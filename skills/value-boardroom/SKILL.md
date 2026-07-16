@@ -25,7 +25,7 @@ Examples:
 - `/value-boardroom 吉利汽车`
 - `/value-boardroom AAPL`
 
-> Optional power-user shortcut: you may still write `--mode briefing|examination` and `--role <role>` in the start command, e.g. `/value-boardroom 吉利汽车 --mode examination --role cfo`. It is never required.
+> Optional power-user shortcut: you may still write `--mode briefing|examination` and `--role <role>` in the start command, e.g. `/value-boardroom ... --mode ... --role cfo`. It is never required.
 
 ## Session Initialization
 
@@ -45,28 +45,28 @@ If the company is ambiguous, ask one clarifying question before proceeding.
 | `briefing` (default) | Simulates the selected executive and that executive's incentives and constraints | Board director / partner | Learns by interrogating operating detail |
 | `examination` | Simulates the board | CEO, CFO, or selected executive | Tests whether the user can explain the business coherently |
 
-Switch modes any time with `/mode`, or just say it in plain language ("reverse roles", "考考我", "我来当 CFO"). No need to restart the session.
+Switch modes any time with `/value-mode`, or just say it in plain language ("reverse roles", "考考我", "我来当 CFO"). No need to restart the session.
 
 ## Commands
 
 | Command | Purpose |
 |---|---|
 | `/value-boardroom [company]` | Initialize or reset a company boardroom session |
-| `/mode [briefing\|examination]` | Switch role mode anytime. `briefing` = you interrogate the executive; `examination` = the board interrogates you. Plain language works too. |
-| `/role [role...]` | Visit one or more roles. **Single role**: prefer the auto-completing `/role-<role>` shortcuts below. **Several roles** (e.g. `/role ceo cfo supply`): played in sequence, one turn each, with a "continue?" prompt between them — no need to retype each one. |
-| `/next` | Step to the next role on the suggested agenda (see below), skipping roles already visited. Keeps a full-company tour moving with a single word. |
-| `/research [topic]` | Collect or request verifiable public information and classify it by evidence class |
-| `/assumption` | View or revise material modelling assumptions |
-| `/evidence` | Show the evidence ledger |
-| `/cashflow` | Translate operating results into revenue, margin, working capital, CapEx, FCF, and ROIC |
+| `/value-mode [briefing\|examination]` | Switch role mode anytime. `briefing` = you interrogate the executive; `examination` = the board interrogates you. Plain language works too. |
+| `/value-role [role...]` | Visit one or more roles. **Single role**: prefer the auto-completing `/value-role-<role>` shortcuts below. **Several roles** (e.g. `/value-role ceo cfo supply`): played in sequence, one turn each, with a "continue?" prompt between them — no need to retype each one. |
+| `/value-next` | Step to the next role on the suggested agenda (see below), skipping roles already visited. Keeps a full-company tour moving with a single word. |
+| `/value-research [topic]` | Collect or request verifiable public information and classify it by evidence class |
+| `/value-assumption` | View or revise material modelling assumptions |
+| `/value-evidence` | Show the evidence ledger |
+| `/value-cashflow` | Translate operating results into revenue, margin, working capital, CapEx, FCF, and ROIC |
 
 > Every `<role>` must be one of the fourteen identifiers in `references/operating-roles.md`: `secretary`, `ceo`, `cfo`, `product`, `marketing`, `sales`, `channel`, `supply`, `operations`, `customer-success`, `people`, `legal-risk`, `strategy-ma`, `ir-pr`.
 
-**Single-role shortcuts (auto-completable):** each role is also its own slash command — type `/role-` and pick from the list, no need to type the role name: `/role-secretary`, `/role-ceo`, `/role-cfo`, `/role-product`, `/role-marketing`, `/role-sales`, `/role-channel`, `/role-supply`, `/role-operations`, `/role-customer-success`, `/role-people`, `/role-legal-risk`, `/role-strategy-ma`, `/role-ir-pr`.
+**Single-role shortcuts (auto-completable):** each role is also its own slash command — type `/value-role-` and pick from the list, no need to type the role name: `/value-role-secretary`, `/value-role-ceo`, `/value-role-cfo`, `/value-role-product`, `/value-role-marketing`, `/value-role-sales`, `/value-role-channel`, `/value-role-supply`, `/value-role-operations`, `/value-role-customer-success`, `/value-role-people`, `/value-role-legal-risk`, `/value-role-strategy-ma`, `/value-role-ir-pr`.
 
 ## Role Agenda (Suggested Tour)
 
-When chaining roles (`/role ceo cfo ...`) or stepping with `/next`, follow this default order through the company. Reorder or skip to fit the company and the research aim:
+When chaining roles (`/value-role ceo cfo ...`) or stepping with `/value-next`, follow this default order through the company. Reorder or skip to fit the company and the research aim:
 
 1. `secretary` — set the agenda and the evidence standard
 2. `ceo` — business model, growth, strategy, culture, capital allocation
@@ -85,7 +85,7 @@ When chaining roles (`/role ceo cfo ...`) or stepping with `/next`, follow this 
 
 ## Chaining Roles
 
-When the user chains roles (`/role ceo cfo supply`) or says "继续/next": play the next role for **one turn only**, then offer to continue — e.g. *"继续到 [cfo]？回复「继续」，或 `/role <角色>` 自选，或说「停」结束。"* End the chain the moment the user says stop or changes topic.
+When the user chains roles (`/value-role ceo cfo supply`) or says "继续/next": play the next role for **one turn only**, then offer to continue — e.g. *"继续到 [cfo]？回复「继续」，或 `/value-role <角色>` 自选，或说「停」结束。"* End the chain the moment the user says stop or changes topic.
 
 ## Role Turn Contract
 

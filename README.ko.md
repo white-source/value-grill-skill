@@ -63,11 +63,11 @@ claude plugin install value-grill-skill@white-source
 | `briefing` (기본값) | 선택한 경영진 — 인센티브, 예산, 갈등 포함 | 질문하는 이사회 이사 / 파트너 | 실제 운영 세부사항을 추궁하여 이해를 구축; 경영진은 모든 숫자를 현금흐름까지 정당화해야 함 |
 | `examination` | 이사회 | 답변하는 CEO, CFO 또는 선택한 경영진 | **당신이** 실제로 비즈니스를 이해하는지 테스트; 이사회는 당신 추론의 허점과 모호함을 포착 |
 
-**briefing** = 질문하며 배우기. **examination** = 질문받으며 배우기. 시작 시 한 번의 질문으로 모드를 선택하고(기본값 `briefing`), 언제든지 `/mode`로 전환 — 또는 그냥 말하세요("역할 바꿔", "나를 시험해봐"). 재시작 불필요. 어느 쪽이든 턴 계약은 동일: 사실 또는 레이블이 붙은 가정을 진술하고, 하나의 인센티브 갈등을 드러내며, 명확한 현금흐름 경로를 추적하고, 정확히 하나의 질문을 합니다.
+**briefing** = 질문하며 배우기. **examination** = 질문받으며 배우기. 시작 시 한 번의 질문으로 모드를 선택하고(기본값 `briefing`), 언제든지 `/value-mode`로 전환 — 또는 그냥 말하세요("역할 바꿔", "나를 시험해봐"). 재시작 불필요. 어느 쪽이든 턴 계약은 동일: 사실 또는 레이블이 붙은 가정을 진술하고, 하나의 인센티브 갈등을 드러내며, 명확한 현금흐름 경로를 추적하고, 정확히 하나의 질문을 합니다.
 
 ## 운영 역할
 
-14개의 역할이 회사 전체를 포괄합니다. 자동 완성되는 `/role-<역할>` 바로가기로 하나에 진입하거나(예: `/role-cfo`), `/role ceo cfo ...`로 여러 개를 연결하거나, `/next`로 순차적으로 진행합니다. 각 역할은 자신의 권한 내에서만 발언하며, 예산 또는 전략적 갈등을 표면화하고, 자신의 논점을 수익, 비용, 운전자본, CapEx 또는 자본 배분에 연결합니다.
+14개의 역할이 회사 전체를 포괄합니다. 자동 완성되는 `/value-role-<역할>` 바로가기로 하나에 진입하거나(예: `/value-role-cfo`), `/value-role ceo cfo ...`로 여러 개를 연결하거나, `/value-next`로 순차적으로 진행합니다. 각 역할은 자신의 권한 내에서만 발언하며, 예산 또는 전략적 갈등을 표면화하고, 자신의 논점을 수익, 비용, 운전자본, CapEx 또는 자본 배분에 연결합니다.
 
 | 역할 | 담당 | 질문할 내용 |
 |---|---|---|
@@ -92,17 +92,17 @@ claude plugin install value-grill-skill@white-source
 |---|---|
 | `/value-ask [질문 또는 목표]` | 원하는 것을 설명하면 적절한 명령어를 추천하고 설명 |
 | `/value-boardroom [회사]` | 회사 이사회 세션 초기화 또는 재설정 |
-| `/mode [briefing\|examination]` | 언제든지 역할 모드 전환 — 또는 그냥 말하세요 |
-| `/role-<역할>` | **자동 완성**되는 단일 역할 바로가기 — `/role-` 입력 후 선택 (예: `/role-cfo`) |
-| `/role [역할...]` | 여러 경영진을 순서대로 연결, 예: `/role ceo cfo supply` |
-| `/next` | 제안된 투어의 다음 역할로 이동 — 재입력 불필요 |
-| `/research [주제]` | 검증 가능한 공개 정보를 수집 또는 요청하고 증거 클래스로 분류 |
-| `/assumption` | 중요한 모델링 가정 보기 또는 수정 |
-| `/evidence` | 증거 원장 표시 |
-| `/cashflow` | 운영 결과를 수익, 마진, 운전자본, CapEx, FCF, ROIC로 변환 |
-| `/stress-test [충격]` | 명명된 충격 실행 또는 현금흐름 체인을 따라 약세/기본/강세 시나리오 구축 |
-| `/kill [연도]` | 사전 부검: 선택한 연도까지 현금흐름 실패를 가정하고 역으로 추적 |
-| `/board-summary` | 역할극을 종료하고 추적 가능한 이사회 결론을 종합 |
+| `/value-mode [briefing\|examination]` | 언제든지 역할 모드 전환 — 또는 그냥 말하세요 |
+| `/value-role-<역할>` | **자동 완성**되는 단일 역할 바로가기 — `/value-role-` 입력 후 선택 (예: `/value-role-cfo`) |
+| `/value-role [역할...]` | 여러 경영진을 순서대로 연결, 예: `/value-role ceo cfo supply` |
+| `/value-next` | 제안된 투어의 다음 역할로 이동 — 재입력 불필요 |
+| `/value-research [주제]` | 검증 가능한 공개 정보를 수집 또는 요청하고 증거 클래스로 분류 |
+| `/value-assumption` | 중요한 모델링 가정 보기 또는 수정 |
+| `/value-evidence` | 증거 원장 표시 |
+| `/value-cashflow` | 운영 결과를 수익, 마진, 운전자본, CapEx, FCF, ROIC로 변환 |
+| `/value-stress-test [충격]` | 명명된 충격 실행 또는 현금흐름 체인을 따라 약세/기본/강세 시나리오 구축 |
+| `/value-kill [연도]` | 사전 부검: 선택한 연도까지 현금흐름 실패를 가정하고 역으로 추적 |
+| `/value-board-summary` | 역할극을 종료하고 추적 가능한 이사회 결론을 종합 |
 
 ## 예시: Pop Mart (泡泡瑪特, HKEX: 9992)
 
@@ -112,7 +112,7 @@ claude plugin install value-grill-skill@white-source
 
 ```text
 > /value-boardroom Pop Mart --mode briefing
-> /role-cfo
+> /value-role-cfo
 ```
 | 지표 | TTM (HKD) | 클래스 |
 |---|---|---|
@@ -122,12 +122,12 @@ claude plugin install value-grill-skill@white-source
 | 현금 | 172억 (D/E 12.6%) | `Fact` |
 
 ```text
-> /cashflow
+> /value-cashflow
 ```
 ¥59–69/박스 → 수익 ¥340억 → 고마진 → 경량 운전자본 → CapEx → **FCF HKD 91억**. 3대 드라이버: 동일 점포 트래픽, 해외 ROIC, 프리미엄 카테고리 믹스.
 
 ```text
-> /stress-test 가격 -10% / > /kill 2030 / > /board-summary
+> /value-stress-test 가격 -10% / > /value-kill 2030 / > /value-board-summary
 ```
 충격 전달 체인 + 사전 부검 + 6섹션 이사회 결론 — 모두 **반증 기준이 있는 조건부 스토리**, 단일 예측이 아님. *투자 추천, 목표 주가, 매매 판단 없음.*
 

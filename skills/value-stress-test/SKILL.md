@@ -14,10 +14,10 @@ User-entry skill for scenario analysis and pre-mortem. It traces a shock through
 
 | Command | Purpose |
 |---|---|
-| `/stress-test [shock or scenario]` | Trace a named shock or build bear/base/bull cases through the cash-flow chain |
-| `/kill [year]` | Pre-mortem: assume material cash-flow failure by the chosen year and work backwards |
+| `/value-stress-test [shock or scenario]` | Trace a named shock or build bear/base/bull cases through the cash-flow chain |
+| `/value-kill [year]` | Pre-mortem: assume material cash-flow failure by the chosen year and work backwards |
 
-## `/stress-test`
+## `/value-stress-test`
 
 A stress test follows the selected shock through every link in the chain and shows how it transmits to cash:
 
