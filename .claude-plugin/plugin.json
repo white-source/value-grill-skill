@@ -1,0 +1,8 @@
+{
+  "name": "value-grill-skill",
+  "version": "0.1.0",
+  "description": "Owner-style company research and boardroom cash-flow skills",
+  "author": { "name": "white-source" },
+  "license": "MIT",
+  "keywords": ["value-investing", "company-research", "cash-flow", "boardroom", "skills"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "white-source",
+  "owner": { "name": "white-source" },
+  "description": "Portable owner-style company research skills for Claude Code and Agent Skills compatible agents.",
+  "plugins": [{
+    "name": "value-grill-skill",
+    "source": "./",
+    "description": "Boardroom roleplay and cash-flow research skills for understanding companies as an owner.",
+    "category": "productivity",
+    "keywords": ["value-investing", "cash-flow", "research"]
+  }]
+}
