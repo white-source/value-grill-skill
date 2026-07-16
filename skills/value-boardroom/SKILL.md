@@ -69,7 +69,7 @@ Switch modes any time with `/mode`, or just say it in plain language ("reverse r
 When chaining roles (`/role ceo cfo ...`) or stepping with `/next`, follow this default order through the company. Reorder or skip to fit the company and the research aim:
 
 1. `secretary` — set the agenda and the evidence standard
-2. `ceo` — growth, strategy, capital allocation
+2. `ceo` — business model, growth, strategy, culture, capital allocation
 3. `cfo` — profit quality, cash, returns
 4. `product` — customer problem, pricing, retention
 5. `marketing` — acquisition, brand, ad dependency

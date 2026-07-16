@@ -1,6 +1,6 @@
 # Value Boardroom Skills
 
-> **English** | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [Español](README.es.md)
+> **English** | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [Español](README.es.md) | [Русский](README.ru.md) | [한국어](README.ko.md) | [العربية](README.ar.md)
 
 Portable Agent Skills library that helps an investor study a listed company as an owner and operator. It uses role-based, Socratic boardroom conversations to connect operational choices to future free cash flow (FCF) — instead of producing generic investment reports or trading recommendations.
 
@@ -72,7 +72,7 @@ Fourteen roles cover the whole company. Enter one with the auto-completing `/rol
 | Role | What they own | What to interrogate |
 |---|---|---|
 | `secretary` | Board secretary / coach — agenda, question tree, evidence, assumptions | Whether every conclusion is sourced and traceable |
-| `ceo` | CEO — growth sources, strategic boundaries, capital allocation | Organic vs acquired growth, reinvestment rate, returns on capital |
+| `ceo` | CEO — business model, growth sources, strategy, culture, capital allocation | Business model defensibility (lock-in, switching cost, network effects), organic vs acquired growth, reinvestment rate, culture-talent alignment, returns on capital |
 | `cfo` | CFO — profit quality, leverage, working capital, allocation | Cash conversion cycle, accrual vs cash profit, maintenance vs growth CapEx |
 | `product` | Product / R&D — customer problem, roadmap, substitution risk | Pricing power, retention/churn, R&D efficiency |
 | `marketing` | Marketing / brand — acquisition, loyalty, ad dependency | CAC, LTV, what declines first if advertising stops |
@@ -103,6 +103,53 @@ Fourteen roles cover the whole company. Enter one with the auto-completing `/rol
 | `/stress-test [shock]` | Run a named shock or build bear/base/bull cases through the cash-flow chain |
 | `/kill [year]` | Pre-mortem: assume cash-flow failure by the chosen year and work backwards |
 | `/board-summary` | Exit roleplay and synthesize a traceable board conclusion |
+
+## Example: Pop Mart (泡泡玛特, HKEX: 9992)
+
+> Not investment advice. Every claim carries an evidence class. [Full walkthrough (Chinese) →](docs/examples/popmart-walkthrough.md)
+
+A condensed run of the main commands on a real listed company, with real sourced financials (Yahoo Finance TTM, Wikipedia). Every number is tagged by evidence class.
+
+```text
+> /value-boardroom Pop Mart --mode briefing
+```
+Company confirmed. Pop Mart International (HKEX: 9992), as-of July 2026. Briefing mode.
+
+```text
+> /role-cfo
+```
+
+| Metric | TTM (HKD) | Class |
+|---|---|---|
+| Revenue | 37.1B | `Fact` |
+| Net income | 12.8B (margin 34%) | `Fact` |
+| Levered FCF | 9.1B | `Fact` |
+| Cash | 17.2B (D/E 12.6%) | `Fact` |
+| ROE | 77.6% | `Fact` |
+
+FCF/net ≈ 71% → ~29% of profit absorbed by working capital + CapEx (`Inference`). Light asset, high margin, low debt.
+
+```text
+> /cashflow
+```
+Avg price ¥59–69/box (`Fact`, Wikipedia) × units × IP mix → revenue ¥34B (`Fact`, Yahoo Finance TTM) → high margin → light WC (cash at sale) → CapEx (stores/roboshops/overseas) → **FCF HKD 9.1B TTM**. Three drivers: same-store traffic, overseas ROIC, premium-category mix (`Inference`).
+
+```text
+> /stress-test price -10%
+```
+Chain: price ↓ → volume? (`Unknown`) → fixed cost unchanged → operating leverage worsens → FCF pressured. **Bear/Base/Bull with falsification criteria**, not a single forecast.
+
+```text
+> /kill 2030
+```
+Pre-mortem: Labubu fatigue → comps weaken → overseas payback stretches >36 months → growth CapEx becomes a cash drain → 2030 crunch. **Early indicator**: overseas comps 3-quarter decline + payback >3yr.
+
+```text
+> /board-summary
+```
+Six-section conclusion: FCF mechanism tracked to sourced data, 5/10/20yr stability assessment, conditional scenarios, ≤3 drivers, counterevidence ranked by materiality, next agenda with roles + evidence + metrics to observe.
+
+*Not investment advice. No target price, no buy/sell/hold.*
 
 ## Evidence classes
 

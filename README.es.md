@@ -1,6 +1,6 @@
 # Value Boardroom Skills (Habilidades de Sala de Juntas)
 
-> [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | **Español**
+> [English](README.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | **Español** | [Русский](README.ru.md) | [한국어](README.ko.md) | [العربية](README.ar.md)
 
 Biblioteca portátil de Agent Skills que ayuda a un inversor a estudiar una empresa cotizada como **propietario y operador**. Usa conversaciones socráticas basadas en roles, estilo sala de juntas, para conectar las decisiones operativas con el flujo de caja libre (FCF) futuro, en lugar de producir informes de inversión genéricos o recomendaciones de trading.
 
@@ -72,7 +72,7 @@ Catorce roles cubren toda la empresa. Entra en uno con el atajo autocompletable 
 | Rol | De qué se encarga | Qué interrogar |
 |---|---|---|
 | `secretary` | Secretario de junta / coach — agenda, árbol de preguntas, evidencia, supuestos | Que cada conclusión tenga fuente y sea trazable |
-| `ceo` | CEO — fuentes de crecimiento, límites estratégicos, asignación de capital | Crecimiento orgánico vs por adquisiciones, tasa de reinversión, rentabilidad del capital |
+| `ceo` | CEO — modelo de negocio, fuentes de crecimiento, estrategia, cultura, asignación de capital | Defensa del modelo de negocio, crecimiento orgánico vs adquisiciones, tasa de reinversión, alineación cultura-talento, rentabilidad del capital |
 | `cfo` | CFO — calidad del beneficio, apalancamiento, capital circulante, asignación | Ciclo de conversión de caja, beneficio devengado vs en caja, CapEx de mantenimiento vs crecimiento |
 | `product` | Producto / I+D — problema del cliente, hoja de ruta, riesgo de sustitución | Poder de precios, retención/churn, eficiencia de I+D |
 | `marketing` | Marketing / marca — adquisición, fidelidad, dependencia de publicidad | CAC, LTV, qué cae primero si se detiene la publicidad |
@@ -103,6 +103,40 @@ Catorce roles cubren toda la empresa. Entra en uno con el atajo autocompletable 
 | `/stress-test [shock]` | Ejecuta un shock nombrado o construye escenarios pesimista/base/optimista a lo largo de la cadena de flujo de caja |
 | `/kill [año]` | Pre-mortem: asume fallo de flujo de caja para el año elegido y trabaja hacia atrás |
 | `/board-summary` | Sale del roleplay y sintetiza una conclusión trazable de la junta |
+
+## Ejemplo: Pop Mart (泡泡瑪特, HKEX: 9992)
+
+> No es una recomendación de inversión. Cada afirmación lleva su clase de evidencia. [Recorrido completo (chino) →](docs/examples/popmart-walkthrough.md)
+
+```text
+> /value-boardroom Pop Mart --mode briefing
+```
+Pop Mart (HKEX: 9992), referencia julio 2026, modo briefing.
+
+```text
+> /role-cfo
+```
+| Métrica | TTM (HKD) | Clase |
+|---|---|---|
+| Ingresos | 37,1B | `Fact` |
+| Beneficio neto | 12,8B (34%) | `Fact` |
+| FCF | 9,1B | `Fact` |
+| Caja | 17,2B (D/E 12,6%) | `Fact` |
+
+```text
+> /cashflow
+```
+¥59–69/caja (`Fact`) → ingresos ¥34B (`Fact`) → alto margen → WC ligero → CapEx → **FCF HKD 9,1B**. Tres drivers: tráfico en mismas tiendas, ROIC exterior, mezcla prémium. (`Inference`)
+
+```text
+> /stress-test precio -10% / > /kill 2030
+```
+Cadena de transmisión del shock + pre-mortem. Ambos como **historias condicionales con criterios de falsación**, nunca un pronóstico puntual falso.
+
+```text
+> /board-summary
+```
+Conclusión de junta en 6 secciones con datos con fuente. *Sin recomendación, precio objetivo ni instrucciones de trading.*
 
 ## Clases de evidencia
 

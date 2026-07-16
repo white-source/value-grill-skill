@@ -1,6 +1,6 @@
 # Value Boardroom Skills（价值董事会议室技能库）
 
-> English | **简体中文** | [日本語](README.ja.md) | [Español](README.es.md)
+> English | **简体中文** | [日本語](README.ja.md) | [Español](README.es.md) | [Русский](README.ru.md) | [한국어](README.ko.md) | [العربية](README.ar.md)
 
 便携的 Agent Skills 库，帮助投资者以**所有者和经营者**的视角研究上市公司。它通过角色扮演式的苏格拉底式董事会对话，把经营选择与未来自由现金流（FCF）联系起来——而不是生成通用的投资报告或交易建议。
 
@@ -72,7 +72,7 @@ claude plugin install value-grill-skill@white-source
 | 角色 | 负责什么 | 要盘问什么 |
 |---|---|---|
 | `secretary` | 董会秘书 / 教练——议程、问题树、证据、假设 | 每个结论是否都有来源、可追溯 |
-| `ceo` | CEO——增长来源、战略边界、资本配置 | 内生 vs 并购增长、再投资率、投入资本回报 |
+| `ceo` | CEO——商业模式、增长来源、战略边界、企业文化、资本配置 | 商业模式护城河（客户锁定、转换成本、网络效应）、内生 vs 并购增长、再投资率、人才文化匹配度、投入资本回报 |
 | `cfo` | CFO——利润质量、杠杆、营运资本、配置 | 现金周转周期、应计 vs 现金利润、维护 vs 增长 CapEx |
 | `product` | 产品 / 研发——客户问题、路线图、替代风险 | 定价能力、留存/流失、研发效率 |
 | `marketing` | 市场 / 品牌——获客、忠诚度、广告依赖 | CAC、LTV、停掉广告后哪个指标先掉 |
@@ -103,6 +103,89 @@ claude plugin install value-grill-skill@white-source
 | `/stress-test [冲击]` | 跑一个命名冲击，或沿现金流链条构建熊/基准/牛情景 |
 | `/kill [年份]` | 预演破产：假设到所选年份现金流失败，再倒推原因 |
 | `/board-summary` | 退出角色扮演，汇总出可追溯的董事会结论 |
+
+## 示例：泡泡玛特（Pop Mart，HKEX: 9992）
+
+> 这不是投资建议。每条主张都标注了证据类别（`Fact` = 有来源，`Assumption` = 假设，`Inference` = 推导，`Unknown` = 未知）。[完整演练文档 →](docs/examples/popmart-walkthrough.md)
+
+以下展示用泡泡玛特跑一遍主要命令的实际效果。
+
+```text
+> /value-boardroom 泡泡玛特 --mode briefing
+```
+确认：泡泡玛特国际集团（HKEX: 9992），截止日 2026-07。briefing 模式（模型扮高管，你当董事）。
+
+```text
+> /role-cfo
+```
+
+**[CFO 汇报]**
+
+| 指标 | TTM 值 | 来源 |
+|---|---|---|
+| 收入 | HKD 371 亿 | `Fact` Yahoo Finance |
+| 净利润 | HKD 128 亿（净利 34%） | `Fact` Yahoo Finance |
+| 杠杆 FCF | HKD 91 亿 | `Fact` Yahoo Finance |
+| 现金 | HKD 172 亿，D/E 仅 12.6% | `Fact` Yahoo Finance |
+| ROE | 77.6% | `Fact` Yahoo Finance |
+
+- **FCF/净利 ≈ 71%**，约 29% 利润用于营运资本和 CapEx（`Inference`）
+- **高利润率 + 极低负债 → 轻资产模式强势**（`Inference`）
+- **冲突**：海外扩张需要大量增长 CapEx——若新店回本期延长，FCF 转化率会恶化
+
+> *董事问题：TTM 的 FCF 里，多少用于维护性 CapEx vs 增长性 CapEx？新店回本需要多长时间？*
+
+```text
+> /cashflow
+```
+
+**客户付款 → FCF 桥梁（全部带证据类别）：**
+
+```
+平均售价 ¥59-69/盒（Fact，Wikipedia）× 售出件数 × IP 组合
+   → 收入 ~RMB 340 亿 FY2024（Fact，Yahoo Finance TTM）
+      − 变动成本：玩具制造成本、版权/设计分成（Assumption）
+         → IP 热度 → 单店杯量 → 固定成本（租金）摊薄 → FCF
+            − 维护 CapEx + 增长 CapEx（开店/机器人商店/海外）
+               → FCF ≈ HKD 91 亿 TTM（Fact）
+```
+
+**最多三个 FCF 驱动：**
+1. **IP 热度 → 单店杯量 × 客价** —— 固定成本（租金）摊薄核心
+2. **海外扩张的 ROIC** —— 增长 CapEx 是创造还是消耗价值
+3. **毛绒品类占比** —— 结构提价 > CapEx 投入（`Inference`）
+
+```text
+> /stress-test 客单价下降10%
+```
+
+**冲击链：** 价格 -10% → 杯量？(Unknown) → 固定成本不变 → 营业杠杆恶化 → FCF 承压。**熊/基准/牛模型（条件故事，非精确预测）：**
+
+| 情景 | FCF | 证伪指标 |
+|---|---|---|
+| 熊（降价 + 杯量不升） | 大幅降 | 同店杯量连续季降 |
+| 基准（杯量升 5%） | 温和降 10-15% | 杯量对冲率 <100% |
+| 牛（杯量升 15%+） | 几乎不受影响 | 杯量升幅 ≥ 降幅 |
+
+```text
+> /kill 2030
+```
+**预演：** Labubu 热度峰值回落 → 同店杯量降 → 海外新店回本期 > 36 个月 → 增长 CapEx 烧钱 → 2030 现金流危机。**最早警示指标**：海外同店杯量连降 3 季 + 回本期 > 3 年。
+
+```text
+> /board-summary
+```
+
+**六段结论节选：**
+
+1. **FCF 机制：** 现款现结 + 高净利 34% + 开店 CapEx → TTM FCF HKD 91 亿，ROE 78%
+2. **5/10/20 年：** IP 热度 5 年内稳定存疑（`Unknown`）；品类 20 年不可预测
+3. **熊/基准/牛：** 关键证伪信号 = 同店杯量、海外回本期、监管
+4. **三个驱动：** 单店杯量、海外 ROIC、品类升级
+5. **最大反证：** Labubu 的生命周期 + 海外回本期 → 可直接推翻当前乐观叙事
+6. **下一步：** 联系 CFO 拆 CapEx、product 拆 IP 管线、取海外同店数据
+
+*这不是投资建议，不含目标价或买卖判断。*
 
 ## 证据类别
 
