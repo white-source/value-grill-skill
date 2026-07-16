@@ -52,21 +52,50 @@ No hace falta ningún paso de configuración adicional: inicia con `/value-board
 /value-boardroom [nombre de empresa o ticker]
 ```
 
-Al iniciar, la sesión confirma la empresa (y el identificador/mercado si se conoce), la fecha de corte, el objetivo de investigación, el modo de evidencia (solo aportado por el usuario, o investigación web pública cuando el agente puede acceder) y el modo de rol.
+Al iniciar, la sesión confirma la empresa (y el identificador/mercado si se conoce), la fecha de corte, el objetivo de investigación y el modo de evidencia. El modo de rol es una sola pregunta rápida (predeterminado `briefing`) — sin banderas que escribir.
 
-## Dos modos de rol
+## Inversión de roles — el mecanismo central
 
-| Modo | Modelo | Usuario | Qué se aprende |
+La característica distintiva de esta biblioteca es la **inversión de roles**: puedes estudiar una empresa desde cualquiera de los dos lados de la mesa de la junta, y los mismos catorce roles operativos funcionan en ambas direcciones.
+
+| Modo | El modelo interpreta | Tú interpretas | Por qué usarlo |
 |---|---|---|---|
-| `briefing` (predeterminado) | Simula al ejecutivo seleccionado, incluidos incentivos y restricciones | Director / socio | Se aprende interrogando el detalle operativo |
-| `examination` | Simula a la junta | CEO, CFO o el ejecutivo seleccionado | Comprueba si puedes explicar el negocio con coherencia |
+| `briefing` (predeterminado) | El ejecutivo seleccionado — con sus incentivos, presupuestos y conflictos | Un director / socio que pregunta | Construyes entendimiento interrogando el detalle operativo real; el ejecutivo debe justificar cada cifra hasta el flujo de caja |
+| `examination` | La junta | El CEO, CFO o ejecutivo seleccionado — respondiendo | Pone a prueba si *tú* de verdad entiendes el negocio; la junta expone los huecos y las evasivas de tu propio razonamiento |
+
+**briefing** = aprender interrogando. **examination** = aprender siendo interrogado. Eliges el modo con una pregunta rápida al iniciar (predeterminado `briefing`) y lo cambias en cualquier momento con `/mode` — o simplemente dilo («invierte los roles», «examíname»). No hace falta reiniciar. En ambos casos el contrato de cada turno es idéntico: afirmar un hecho o supuesto etiquetado, exponer un conflicto de incentivos, trazar una ruta clara hacia el flujo de caja y formular exactamente una pregunta.
+
+## Roles operativos
+
+Catorce roles cubren toda la empresa. Entra en uno con el atajo autocompletable `/role-<rol>` (p. ej. `/role-cfo`), encadena varios con `/role ceo cfo ...`, o avanza con `/next`. Cada rol habla solo dentro de su ámbito, expone un conflicto de presupuesto o estrategia y conecta su punto con ingresos, costes, capital circulante, CapEx o asignación de capital.
+
+| Rol | De qué se encarga | Qué interrogar |
+|---|---|---|
+| `secretary` | Secretario de junta / coach — agenda, árbol de preguntas, evidencia, supuestos | Que cada conclusión tenga fuente y sea trazable |
+| `ceo` | CEO — fuentes de crecimiento, límites estratégicos, asignación de capital | Crecimiento orgánico vs por adquisiciones, tasa de reinversión, rentabilidad del capital |
+| `cfo` | CFO — calidad del beneficio, apalancamiento, capital circulante, asignación | Ciclo de conversión de caja, beneficio devengado vs en caja, CapEx de mantenimiento vs crecimiento |
+| `product` | Producto / I+D — problema del cliente, hoja de ruta, riesgo de sustitución | Poder de precios, retención/churn, eficiencia de I+D |
+| `marketing` | Marketing / marca — adquisición, fidelidad, dependencia de publicidad | CAC, LTV, qué cae primero si se detiene la publicidad |
+| `sales` | Ventas — calidad de pedido, precios, concentración | Precio realizado tras descuentos, concentración de clientes, cuentas por cobrar |
+| `channel` | Canal — inventario de distribuidor, merchandising, rebajas | Días de inventario en canal, sell-through, margen de canal |
+| `supply` | Cadena de suministro / compras — costes de inputs, poder de negociación | Concentración de proveedores en COGS, condiciones de contrato, plazos |
+| `operations` | Operaciones / fabricación — utilización, rendimiento, coste unitario | Utilización de capacidad, absorción de costes fijos, CapEx de expansión |
+| `customer-success` | Éxito del cliente / posventa — retención, churn, renovaciones | Retención bruta/neta, expansión vs contracción, coste de servicio |
+| `people` | Personas / organización — talento crítico, incentivos, sucesión | Rotación en puestos clave, estructura de incentivos, cuellos de botella |
+| `legal-risk` | Legal / cumplimiento / riesgo — licencias, litigios, regulación | Pasivos contingentes, exposición regulatoria, gobierno de datos |
+| `strategy-ma` | Estrategia / M&A — nuevas líneas, expansión, adquisiciones | Retornos post-adquisición, fondo de comercio, coste de integración |
+| `ir-pr` | IR / RR.PP. — compromisos, transparencia, reputación | Guía pública vs resultados reales, narrativa vs operaciones |
 
 ## Mapa de comandos
 
 | Comando | Qué hace |
 |---|---|
+| `/value-ask [pregunta u objetivo]` | Describe lo que quieres; recibe el comando adecuado con una explicación |
 | `/value-boardroom [empresa]` | Inicializa o reinicia una sesión de sala de juntas |
-| `/role <rol>` | Pasa al informe de un ejecutivo (uno de los catorce roles operativos) |
+| `/mode [briefing\|examination]` | Cambia el modo de rol en cualquier momento — o simplemente dilo |
+| `/role-<rol>` | Atajo de rol único con **autocompletado** — escribe `/role-` y elige (p. ej. `/role-cfo`) |
+| `/role [rol...]` | Encadena varios ejecutivos en secuencia, p. ej. `/role ceo cfo supply` |
+| `/next` | Avanza al siguiente rol del recorrido sugerido — sin reescribir |
 | `/research [tema]` | Recopila o solicita información pública verificable y la clasifica por clase de evidencia |
 | `/assumption` | Ver o revisar los supuestos materiales del modelo |
 | `/evidence` | Muestra el libro mayor de evidencia |

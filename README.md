@@ -52,21 +52,50 @@ No separate setup step is needed — start a session with `/value-boardroom [com
 /value-boardroom [company name or ticker]
 ```
 
-On start the session confirms the company (and identifier/market if known), the as-of date, the research aim, the evidence mode (user-supplied only, or public-web research when the agent can access it), and the role mode.
+On start the session confirms the company (and identifier/market if known), the as-of date, the research aim, and the evidence mode. The role mode is just one quick question (default `briefing`) — no flags to type.
 
-## Two role modes
+## Role reversal — the core mechanic
 
-| Mode | Model | User | What you learn |
+This library's signature feature is **role reversal**: you can study a company from either side of the boardroom table, and the same fourteen operating roles work in both directions.
+
+| Mode | Model plays | You play | Why use it |
 |---|---|---|---|
-| `briefing` (default) | Simulates the selected executive, including incentives and constraints | Board director / partner | Learns by interrogating operating detail |
-| `examination` | Simulates the board | CEO, CFO, or selected executive | Tests whether you can explain the business coherently |
+| `briefing` (default) | The selected executive — with their incentives, budgets, and conflicts | A board director / partner asking questions | Build understanding by cross-examining real operating detail. The executive must justify every number all the way to cash flow. |
+| `examination` | The board | The CEO, CFO, or selected executive — answering | Pressure-test whether *you* actually understand the business. The board catches the gaps and hand-waving in your own reasoning. |
+
+**briefing** = learn by interrogating. **examination** = learn by being interrogated. You pick the mode with one quick question at startup (default `briefing`), and switch any time with `/mode` — or just say it ("reverse roles", "考考我"). No restart needed. Either way, the turn contract is identical: state a fact or labelled assumption, expose one incentive conflict, trace a clear cash-flow path, and ask exactly one question.
+
+## Operating roles
+
+Fourteen roles cover the whole company. Enter one with the auto-completing `/role-<role>` shortcut (e.g. `/role-cfo`), chain several with `/role ceo cfo ...`, or step through with `/next`. Each speaks only within its remit, surfaces a budget or strategic conflict, and traces its point to revenue, cost, working capital, CapEx, or capital allocation.
+
+| Role | What they own | What to interrogate |
+|---|---|---|
+| `secretary` | Board secretary / coach — agenda, question tree, evidence, assumptions | Whether every conclusion is sourced and traceable |
+| `ceo` | CEO — growth sources, strategic boundaries, capital allocation | Organic vs acquired growth, reinvestment rate, returns on capital |
+| `cfo` | CFO — profit quality, leverage, working capital, allocation | Cash conversion cycle, accrual vs cash profit, maintenance vs growth CapEx |
+| `product` | Product / R&D — customer problem, roadmap, substitution risk | Pricing power, retention/churn, R&D efficiency |
+| `marketing` | Marketing / brand — acquisition, loyalty, ad dependency | CAC, LTV, what declines first if advertising stops |
+| `sales` | Sales — order quality, pricing, concentration | Realized price after discounts, customer concentration, receivables |
+| `channel` | Channel — distributor inventory, merchandising, rebates | Channel inventory days, sell-through, channel margin |
+| `supply` | Supply chain / procurement — input costs, supplier power | COGS supplier concentration, contract terms, lead times |
+| `operations` | Operations / manufacturing — utilization, yield, unit cost | Capacity utilization, fixed-cost absorption, expansion CapEx |
+| `customer-success` | Customer success / after-sales — retention, churn, renewals | Gross/net retention, expansion vs contraction, service cost |
+| `people` | People / org — critical talent, incentives, succession | Attrition in key roles, incentive structure, bottlenecks |
+| `legal-risk` | Legal / compliance / risk — licences, litigation, regulation | Contingent liabilities, regulatory exposure, data governance |
+| `strategy-ma` | Strategy / M&A — new lines, expansion, acquisitions | Post-acquisition returns, goodwill, integration cost |
+| `ir-pr` | IR / PR — commitments, transparency, reputation | Public guidance vs actuals, narrative vs operations |
 
 ## Command map
 
 | Command | What it does |
 |---|---|
+| `/value-ask [question or goal]` | Describe what you want; get the right command with an explanation |
 | `/value-boardroom [company]` | Initialize or reset a company boardroom session |
-| `/role <role>` | Move to an executive's report (one of the fourteen operating roles) |
+| `/mode [briefing\|examination]` | Switch role mode anytime — or just say "reverse roles" |
+| `/role-<role>` | Single-role shortcut that **auto-completes** — type `/role-` and pick (e.g. `/role-cfo`) |
+| `/role [role...]` | Chain several executives in sequence, e.g. `/role ceo cfo supply` |
+| `/next` | Step to the next role on the suggested tour — no retyping |
 | `/research [topic]` | Collect or request verifiable public information and classify it by evidence class |
 | `/assumption` | View or revise material modelling assumptions |
 | `/evidence` | Show the evidence ledger |
