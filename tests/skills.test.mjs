@@ -4,9 +4,10 @@ import { join } from "node:path";
 import test from "node:test";
 
 const root = process.cwd();
-const explicit = ["value-boardroom", "value-stress-test", "value-board-summary"];
+const explicit = ["value-boardroom", "value-stress-test", "value-board-summary", "value-ask"];
 const reusable = ["value-grilling", "value-roleplay", "value-research", "value-cashflow"];
 const references = ["operating-roles.md", "industry-adaptation.md", "evidence-ledger.md"];
+const roleIds = ["secretary", "ceo", "cfo", "product", "marketing", "sales", "channel", "supply", "operations", "customer-success", "people", "legal-risk", "strategy-ma", "ir-pr"];
 const skill = (name) => {
   const path = join(root, "skills", name, "SKILL.md");
   assert.ok(existsSync(path), `Missing ${path}`);
@@ -34,4 +35,13 @@ test("research, questioning, and safety contracts are explicit", () => {
   assert.match(skill("value-research"), /do not invent/i);
   assert.match(skill("value-grilling"), /one question at a time/i);
   assert.match(skill("value-board-summary"), /not.*investment recommendation/i);
+});
+
+test("every role has an auto-completable single-role command", () => {
+  for (const r of roleIds) {
+    const path = join(root, "commands", `role-${r}.md`);
+    assert.ok(existsSync(path), `Missing ${path}`);
+    assert.match(readFileSync(path, "utf8"), /^---\n[\s\S]*description: .+\n[\s\S]*---/);
+    assert.match(readFileSync(path, "utf8"), new RegExp(`\\b${r}\\b`));
+  }
 });
