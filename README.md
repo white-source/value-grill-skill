@@ -1,5 +1,7 @@
 # Value Boardroom Skills
 
+> **English** | [简体中文](README.zh-CN.md) | [日本語](README.ja.md) | [Español](README.es.md)
+
 Portable Agent Skills library that helps an investor study a listed company as an owner and operator. It uses role-based, Socratic boardroom conversations to connect operational choices to future free cash flow (FCF) — instead of producing generic investment reports or trading recommendations.
 
 ## Purpose
