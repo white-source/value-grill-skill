@@ -13,11 +13,38 @@
 
 ## インストール
 
+2 つのインストール方法、2 つの考え方があります：
+
+- **Skills CLI**：スキルをプロジェクトにコピーし、自分で編集して独自化できます。
+- **Claude Code プラグイン**：管理された読み取り専用・常に最新のバンドルとして購読し、フォークしません。
+
+### 方法 1 — Skills CLI（編集可能、任意の Agent Skills ハーネスで動作）
+
 ```bash
 npx skills@latest add white-source/value-grill-skill
 ```
 
-Claude Code、Codex、その他の Agent Skills 互換ハーネスで動作します。Claude Code プラグインマニフェストをオプションの配布拡張として同梱しています。
+Claude Code、Codex、Cursor、Copilot、その他の Agent Skills 互換ハーネスで動作します。ファイルはリポジトリにコピーされ、自由に編集できます。
+
+### 方法 2 — Claude Code プラグイン（管理型、プラグアンドプレイ）
+
+手動で保守したくない、すぐ使えるインストールをお望みですか？このスキルセットはネイティブな Claude Code プラグインとしても提供されます。編集可能なファイルをコピーするのではなく、スキル一式を管理バンドルとしてインストールし、新バージョンの公開時に更新されます。
+
+Claude Code 内で：
+
+```
+/plugin marketplace add white-source/value-grill-skill
+/plugin install value-grill-skill@white-source
+```
+
+またはシェルから：
+
+```bash
+claude plugin marketplace add white-source/value-grill-skill
+claude plugin install value-grill-skill@white-source
+```
+
+別途のセットアップ手順は不要です。インストール直後に `/value-boardroom [企業]` で開始できます。
 
 ## 開始
 

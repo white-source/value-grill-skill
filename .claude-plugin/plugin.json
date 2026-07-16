@@ -3,6 +3,16 @@
   "version": "0.1.0",
   "description": "Owner-style company research and boardroom cash-flow skills",
   "author": { "name": "white-source" },
+  "repository": "https://github.com/white-source/value-grill-skill",
   "license": "MIT",
-  "keywords": ["value-investing", "company-research", "cash-flow", "boardroom", "skills"]
+  "keywords": ["value-investing", "company-research", "cash-flow", "boardroom", "skills"],
+  "skills": [
+    "./skills/value-boardroom",
+    "./skills/value-stress-test",
+    "./skills/value-board-summary",
+    "./skills/value-grilling",
+    "./skills/value-roleplay",
+    "./skills/value-research",
+    "./skills/value-cashflow"
+  ]
 }

@@ -13,11 +13,38 @@ Biblioteca portátil de Agent Skills que ayuda a un inversor a estudiar una empr
 
 ## Instalación
 
+Hay dos formas de instalar, dos filosofías:
+
+- **Skills CLI** copia las habilidades en tu proyecto para que las edites y las hagas tuyas.
+- **Plugin de Claude Code** las mantiene como un paquete gestionado, de solo lectura y siempre actualizado, al que te suscribes en lugar de hacer un fork.
+
+### Opción 1 — Skills CLI (editable, funciona con cualquier entorno Agent Skills)
+
 ```bash
 npx skills@latest add white-source/value-grill-skill
 ```
 
-Compatible con Claude Code, Codex y otros entornos compatibles con el estándar Agent Skills. Se incluye un manifiesto de plugin de Claude Code como mejora opcional de distribución.
+Compatible con Claude Code, Codex, Cursor, Copilot y otros entornos compatibles con Agent Skills. Los archivos se copian en tu repositorio y son tuyos para modificar.
+
+### Opción 2 — Plugin de Claude Code (gestionado, plug-and-play)
+
+¿Prefieres una instalación plug-and-play que no mantengas a mano? Este conjunto de habilidades también se distribuye como plugin nativo de Claude Code. En lugar de copiar archivos editables en tu repositorio, el plugin instala todo el conjunto como un paquete gestionado que se actualiza cuando se publica una nueva versión.
+
+Dentro de Claude Code:
+
+```
+/plugin marketplace add white-source/value-grill-skill
+/plugin install value-grill-skill@white-source
+```
+
+O desde tu terminal:
+
+```bash
+claude plugin marketplace add white-source/value-grill-skill
+claude plugin install value-grill-skill@white-source
+```
+
+No hace falta ningún paso de configuración adicional: inicia con `/value-boardroom [empresa]` enseguida.
 
 ## Inicio
 

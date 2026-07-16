@@ -13,11 +13,38 @@ Portable Agent Skills library that helps an investor study a listed company as a
 
 ## Install
 
+There are two ways to install, two philosophies:
+
+- **Skills CLI** copies the skills into your project so you can edit them and make them your own.
+- **Claude Code plugin** keeps them as a managed, read-only, always-current bundle you subscribe to rather than fork.
+
+### Option 1 — Skills CLI (editable, works with any Agent-Skills harness)
+
 ```bash
 npx skills@latest add white-source/value-grill-skill
 ```
 
-Works with Claude Code, Codex, and other Agent-Skills-compatible harnesses. A Claude Code plugin manifest is included as an optional distribution enhancement.
+Works with Claude Code, Codex, Cursor, Copilot, and other Agent-Skills-compatible harnesses. Files are copied into your repo and are yours to modify.
+
+### Option 2 — Claude Code plugin (managed, plug-and-play)
+
+Prefer a plug-and-play install you don't maintain by hand? This skill set also ships as a native Claude Code plugin. Instead of copying editable files into your repo, the plugin installs the whole set as a managed bundle that updates when a new version ships.
+
+Inside Claude Code:
+
+```
+/plugin marketplace add white-source/value-grill-skill
+/plugin install value-grill-skill@white-source
+```
+
+Or from your shell:
+
+```bash
+claude plugin marketplace add white-source/value-grill-skill
+claude plugin install value-grill-skill@white-source
+```
+
+No separate setup step is needed — start a session with `/value-boardroom [company]` right away.
 
 ## Start
 
