@@ -15,7 +15,7 @@ const skill = (name) => {
 
 test("the complete skill set has standard frontmatter", () => {
   for (const name of [...explicit, ...reusable]) {
-    assert.match(skill(name), /^---\nname: [a-z0-9-]+\ndescription: .+\n---/m);
+    assert.match(skill(name), /^---\nname: [a-z0-9-]+\ndescription: .+\n(?:[a-z-]+: .+\n)*---/m);
   }
 });
 
