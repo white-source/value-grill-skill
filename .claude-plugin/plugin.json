@@ -14,6 +14,20 @@
     "./skills/value-grilling",
     "./skills/value-roleplay",
     "./skills/value-research",
-    "./skills/value-cashflow"
+    "./skills/value-cashflow",
+    "./skills/value-role-secretary",
+    "./skills/value-role-ceo",
+    "./skills/value-role-cfo",
+    "./skills/value-role-product",
+    "./skills/value-role-marketing",
+    "./skills/value-role-sales",
+    "./skills/value-role-channel",
+    "./skills/value-role-supply",
+    "./skills/value-role-operations",
+    "./skills/value-role-customer-success",
+    "./skills/value-role-people",
+    "./skills/value-role-legal-risk",
+    "./skills/value-role-strategy-ma",
+    "./skills/value-role-ir-pr"
   ]
 }
