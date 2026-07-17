@@ -1,0 +1,14 @@
+---
+name: value-role-channel
+description: Use when switching to the Channel lead (channel) role in an active value-boardroom session.
+disable-model-invocation: true
+---
+
+# value-role-channel
+
+
+Within the active `value-boardroom` session, switch to the **`channel`** role.
+
+Consult `references/operating-roles.md` for the `channel` remit (distributor or partner inventory, merchandising, rebate economics), required operating evidence, FCF transmission path, and incentive conflict. Then take **one role turn** following the boardroom turn contract: state a fact or labelled assumption, surface one incentive conflict or resource demand, trace a clear cash-flow path, and ask exactly one question. Never invent internal metrics.
+
+If no boardroom session is active yet, ask the user to start one first with `/value-boardroom [company]`.

@@ -39,9 +39,21 @@ test("research, questioning, and safety contracts are explicit", () => {
 
 test("every role has an auto-completable single-role command", () => {
   for (const r of roleIds) {
-    const path = join(root, "skills", "value-boardroom", "commands", `value-role-${r}.md`);
+    const path = join(root, "commands", `value-role-${r}.md`);
     assert.ok(existsSync(path), `Missing ${path}`);
     assert.match(readFileSync(path, "utf8"), /^---\n[\s\S]*description: .+\n[\s\S]*---/);
     assert.match(readFileSync(path, "utf8"), new RegExp(`\\b${r}\\b`));
+  }
+});
+
+test("every role ships as a discoverable SKILL.md", () => {
+  for (const r of roleIds) {
+    const name = `value-role-${r}`;
+    const path = join(root, "skills", name, "SKILL.md");
+    assert.ok(existsSync(path), `Missing ${path}`);
+    const body = readFileSync(path, "utf8");
+    assert.match(body, /^---\nname: value-role-[a-z-]+\ndescription: .+\n(?:[a-z-]+: .+\n)*---/m);
+    assert.match(body, /disable-model-invocation: true/);
+    assert.match(body, new RegExp(`\\b${r}\\b`));
   }
 });

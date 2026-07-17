@@ -46,6 +46,28 @@ claude plugin install value-grill-skill@white-source
 
 No separate setup step is needed — start a session with `/value-boardroom [company]` right away.
 
+### Slash commands across harnesses
+
+The fourteen single-role shortcuts (`/value-role-secretary`, `/value-role-ceo`, … `/value-role-ir-pr`) are plain slash-command files in [`./commands/`](./commands). Each harness discovers slash commands from a different place, so availability depends on how you installed:
+
+| Harness | How `/value-role-*` appears |
+|---|---|
+| **Claude Code** | Automatic if installed as a plugin (Option 2) — the plugin's root `commands/` is read on load. Or run `scripts/install-commands.sh` (Option 1). |
+| **ZCode** | Same as Claude Code (plugin root `commands/`), since ZCode is Claude-Code compatible. |
+| **Kilo** | Run `scripts/install-commands.sh` once to link the commands into `~/.config/kilo/command/`. |
+| **Codex** | Each role ships as its own SKILL.md (in `skills/value-role-*/`), so `$value-role-ceo`, `$value-role-cfo`, … work natively after `npx skills add`. |
+
+If you installed via the Skills CLI (Option 1) rather than the plugin, the role shortcuts work everywhere automatically: in Codex they appear as `$value-role-*` skills, and in Claude Code / ZCode / Kilo you can also wire them as `/value-role-*` slash commands with the bundled helper:
+
+```bash
+scripts/install-commands.sh              # symlink into Claude Code, ZCode, Kilo
+scripts/install-commands.sh --copy       # copy instead of symlink (e.g. for Windows)
+scripts/install-commands.sh --uninstall  # remove them again
+scripts/install-commands.sh --target kilo --target claude   # restrict to given harnesses
+```
+
+Reload / restart your harness after running it.
+
 ## Start
 
 ```
